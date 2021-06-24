@@ -12,9 +12,12 @@ alias    dosource="source ~/.bash_profile "          # ''       '' run your prof
 alias     esource="nano ~/.bash_profile; dosource  " # ''       '' edit & run your profile
 
 # Shorcuts
-alias         gl1="ssh hpcana01.ghdna.io -X -Y "     # Shorcuts to access hpc
-alias         gl3="ssh hpcana03.ghdna.io -X -Y "     # 
-alias         gl4="ssh hpcana04.ghdna.io -X -Y "     # 
+alias         gl1="ssh   hpcana01.ghdna.io -X -Y "   # Shorcuts to access hpc
+alias         gl2="ssh   hpcana03.ghdna.io -X -Y "   # 
+alias         gl3="ssh   hpcana03.ghdna.io -X -Y "   # 
+alias         gl4="ssh   hpcana04.ghdna.io -X -Y "   # 
+alias         gl1="ssh hpclogin01.ghdna.io -X -Y "   # Shorcuts to access login nodes
+alias         gl2="ssh hpclogin02.ghdna.io -X -Y "   # 
 alias         qqq="exit"                             # Skyrim shortcut?
 
 alias         cd1="cd .."                            # Shortcuts for easier folder navigation
