@@ -14,15 +14,15 @@ alias     csource="cat ~/.bash_profile"              # Shortcut to see your prof
 alias    dosource="source ~/.bash_profile "          # ''       '' run your profile     
 alias     esource="nano ~/.bash_profile; dosource  " # ''       '' edit & run your profile
 
-# >>> Shorcuts -- MAC only (not needed inside HPC)
-alias         gl1="ssh   hpcana01.ghdna.io -X -Y "   # Shorcuts to access hpc
-alias         gl2="ssh   hpcana03.ghdna.io -X -Y "   # 
-alias         gl3="ssh   hpcana03.ghdna.io -X -Y "   # 
-alias         gl4="ssh   hpcana04.ghdna.io -X -Y "   # 
-alias         gl1="ssh hpclogin01.ghdna.io -X -Y "   # Shorcuts to access login nodes
+# >>> Shortcuts -- MAC only (not needed inside HPC)
+alias         ga1="ssh   hpcana01.ghdna.io -X -Y "   # Shortcuts to access analysis nodes
+alias         ga2="ssh   hpcana02.ghdna.io -X -Y "   # 
+alias         ga3="ssh   hpcana03.ghdna.io -X -Y "   # 
+alias         ga4="ssh   hpcana04.ghdna.io -X -Y "   # 
+alias         gl1="ssh hpclogin01.ghdna.io -X -Y "   # Shortcuts to access login nodes
 alias         gl2="ssh hpclogin02.ghdna.io -X -Y "   # 
 
-# >>> Shorcuts
+# >>> Shortcuts
 alias         gsd="date '+%Y.%m.%d.%S.%N' "          # Shortcut to get a seed, uses current date in miliseconds (May only work in cluster, not MAC)
 alias         cd1="cd .."                            # Shortcuts for easier folder navigation
 alias         cd2="cd ../.."                         # 
