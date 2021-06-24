@@ -3,23 +3,27 @@
 export HISTSIZE=5000
 
 # # >>> Functions:
-cdl()  { cd "$1" && ll ; }                           # Function to cd to the specified directory and list its content.
-mkcd() { mkdir -p "$1" && cdl "$1" ; }               # Function to generate and access a directory (-p allows to work on already existing dirs)
+cdl()  { cd "$1" && ll ; }                           # (Req: alias ll)  cd to the specified directory and list its content.
+mkcd() { mkdir -p "$1" && cdl "$1" ; }               # (Req: alias cdl) Generate and access a directory (-p allows to work on already existing dirs)
+scn()  { screen -S ${USER}_qlogin_`gsd`}.            # (Req: alias gsd) Run a screen with unique ID
+Qlog() { qlogin -q interact.q -pe parallel "$1" }    # Starts interactive session with the specified procs 
+
 
 # Sources:
 alias     csource="cat ~/.bash_profile"              # Shortcut to see your profile
 alias    dosource="source ~/.bash_profile "          # ''       '' run your profile     
 alias     esource="nano ~/.bash_profile; dosource  " # ''       '' edit & run your profile
 
-# Shorcuts
+# Shorcuts -- MAC only (not needed inside HPC)
 alias         gl1="ssh   hpcana01.ghdna.io -X -Y "   # Shorcuts to access hpc
 alias         gl2="ssh   hpcana03.ghdna.io -X -Y "   # 
 alias         gl3="ssh   hpcana03.ghdna.io -X -Y "   # 
 alias         gl4="ssh   hpcana04.ghdna.io -X -Y "   # 
 alias         gl1="ssh hpclogin01.ghdna.io -X -Y "   # Shorcuts to access login nodes
 alias         gl2="ssh hpclogin02.ghdna.io -X -Y "   # 
-alias         qqq="exit"                             # Skyrim shortcut?
 
+# Shorcuts
+alias         gsd="date '+%Y.%m.%d.%S.%N' "          # Shortcut to get a seed, uses current date in miliseconds (May only work in cluster, not MAC)
 alias         cd1="cd .."                            # Shortcuts for easier folder navigation
 alias         cd2="cd ../.."                         # 
 alias         cd3="cd ../../.."                      # 
@@ -28,21 +32,19 @@ alias        cd1l="cd .. && ll"                      # ditto plus folder content
 alias        cd2l="cd ../.. && ll"                   #
 alias        cd3l="cd ../../.. && ll"                #
 alias        cd4l="cd ../../../.. && ll "            #
-
 alias         cln="clear ; clear ; "                 # Clean screen
 alias         clc="cln cat "                         # Clean screen & show document
 alias         cll="cln ll "                          # Clean screen and show folder content
-
 alias         c2t="tr ',' '\t' "                     # Handy comma to tab
 alias         c2n="tr ',' '\n' "                     # Handy comma to NewLine
-
 alias   DeepTouch="touch * & touch */* & touch */*/* & touch */*/*/* & touch */*/*/*/* & touch */*/*/*/*/* & touch */*/*/*/*/*/* & touch */*/*/*/*/*/*/* & "
 alias        hist="history | cut -c 8- "             # Display history w/o the trail for easy copy-pasting used code
 alias        jump="tput clear && tput cup 100 0 ; "  # Don't erase terminal history but give a clean empty screen (when overwhelmed)
 alias          kk="ls -lah "                         # Yeah, I usually mistype ll, this is for fat fingers like mine.
 alias          ll="ls -lah "                         # Omnipresent
-alias         llt="ls -tlahr "                       # ditto with time.
-
+alias         llt="ls -tlahr "                       # ditto sorted by time.
+alias       mlsge="module load sge "                 # Shortcut to load the SGE module
+alias         qqq="exit"                             # Skyrim shortcut?
 
 # This following command only work with bash as the Login Shell
 # # In terminal run: chsh -s /bin/bash
