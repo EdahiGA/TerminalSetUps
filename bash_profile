@@ -4,10 +4,13 @@ export HISTSIZE=5000                                 # Scroll-back allowed in hi
 
 # >>> Functions:
 cdl()  { cd "$1" && ll ; }                           # (Req: alias ll)  cd to the specified directory and list its content.
-mkcd() { mkdir -p "$1" && cdl "$1" ; }               # (Req: alias cdl) Generate and access a directory (-p allows to work on already existing dirs)
-scn()  { screen -S ${USER}_qlogin_`gsd` ; }          # (Req: alias gsd) Run a screen with unique ID
+mkcd() { mkdir -p "$1" && cdl "$1" ; }               # (Req: alias cdl) Generates and enters a directory (-p allows to work on pre-existing dirs)
+scn()  { screen -S ${USER}_qlogin_`gsd` ; }          # (Req: alias gsd) Run a screen with auto-generated unique ID
 Qlog() { qlogin -q interact.q -pe parallel "$1" ; }  # Starts interactive session with the specified procs 
-
+Rescn(){                                             # Re-join specified screen (1=oldest screen)
+  re=`screen -ls|cut -f2|sed -n $(($1+1))'p'`;
+  [[ $re =~ qlog ]] && screen -R $re || echo N/A ;
+}
 
 # >>> Sources:
 alias     csource="cat ~/.bash_profile"              # Shortcut to see your profile
