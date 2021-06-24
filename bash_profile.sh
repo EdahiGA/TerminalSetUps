@@ -1,20 +1,20 @@
-# >>>>>> EXPORTS:
-# >>>    Environment
-export HISTSIZE=5000
+# >>> EXPORTS:
+export     TEMP=/tmp/${USER}                         # Auto-define my own temporal environment
+export HISTSIZE=5000                                 # Scroll-back allowed in history command
 
-# # >>> Functions:
+# >>> Functions:
 cdl()  { cd "$1" && ll ; }                           # (Req: alias ll)  cd to the specified directory and list its content.
 mkcd() { mkdir -p "$1" && cdl "$1" ; }               # (Req: alias cdl) Generate and access a directory (-p allows to work on already existing dirs)
 scn()  { screen -S ${USER}_qlogin_`gsd`}.            # (Req: alias gsd) Run a screen with unique ID
 Qlog() { qlogin -q interact.q -pe parallel "$1" }    # Starts interactive session with the specified procs 
 
 
-# Sources:
+# >>> Sources:
 alias     csource="cat ~/.bash_profile"              # Shortcut to see your profile
 alias    dosource="source ~/.bash_profile "          # ''       '' run your profile     
 alias     esource="nano ~/.bash_profile; dosource  " # ''       '' edit & run your profile
 
-# Shorcuts -- MAC only (not needed inside HPC)
+# >>> Shorcuts -- MAC only (not needed inside HPC)
 alias         gl1="ssh   hpcana01.ghdna.io -X -Y "   # Shorcuts to access hpc
 alias         gl2="ssh   hpcana03.ghdna.io -X -Y "   # 
 alias         gl3="ssh   hpcana03.ghdna.io -X -Y "   # 
@@ -22,7 +22,7 @@ alias         gl4="ssh   hpcana04.ghdna.io -X -Y "   #
 alias         gl1="ssh hpclogin01.ghdna.io -X -Y "   # Shorcuts to access login nodes
 alias         gl2="ssh hpclogin02.ghdna.io -X -Y "   # 
 
-# Shorcuts
+# >>> Shorcuts
 alias         gsd="date '+%Y.%m.%d.%S.%N' "          # Shortcut to get a seed, uses current date in miliseconds (May only work in cluster, not MAC)
 alias         cd1="cd .."                            # Shortcuts for easier folder navigation
 alias         cd2="cd ../.."                         # 
@@ -45,6 +45,12 @@ alias          ll="ls -lah "                         # Omnipresent
 alias         llt="ls -tlahr "                       # ditto sorted by time.
 alias       mlsge="module load sge "                 # Shortcut to load the SGE module
 alias         qqq="exit"                             # Skyrim shortcut?
+
+# >>> Temporal Folders
+[ -d $TEMP ] || mkdir -p $TEMP                       # Generate my temporal folder if non-existant
+
+# >>> R packages default installation folder
+[[ -n $R_LIBS ]] &&   export R_LIBS=~/R/library:$R_LIBS   ||  export R_LIBS=~/R/library
 
 # This following command only work with bash as the Login Shell
 # # In terminal run: chsh -s /bin/bash
