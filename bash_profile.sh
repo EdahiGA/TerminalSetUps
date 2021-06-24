@@ -5,7 +5,7 @@ export HISTSIZE=5000                                 # Scroll-back allowed in hi
 # >>> Functions:
 cdl()  { cd "$1" && ll ; }                           # (Req: alias ll)  cd to the specified directory and list its content.
 mkcd() { mkdir -p "$1" && cdl "$1" ; }               # (Req: alias cdl) Generate and access a directory (-p allows to work on already existing dirs)
-scn()  { screen -S ${USER}_qlogin_`gsd`}.            # (Req: alias gsd) Run a screen with unique ID
+scn()  { screen -S ${USER}_qlogin_`gsd` ; }          # (Req: alias gsd) Run a screen with unique ID
 Qlog() { qlogin -q interact.q -pe parallel "$1" }    # Starts interactive session with the specified procs 
 
 
